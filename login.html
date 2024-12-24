@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gadget Zone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Navbar */
+        header {
+            background-color:darkcyan;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: #f39c12;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .navbar-nav .nav-link {
+            color: #ecf0f1 !important;
+            font-weight: 500;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f39c12 !important;
+        }
+
+        /* Login Section */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('data:image/jpeg;base64,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') no-repeat center center;
+            background-size: cover;
+        }
+
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .login-form h2 {
+            font-size: 32px;
+            color: #34495e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-form .form-control {
+            border-radius: 25px;
+            padding: 15px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form .btn-primary {
+            background-color:darkcyan;
+            border-radius: 25px;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form .btn-primary:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .login-form .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .login-form .forgot-password a {
+            color:red;
+            text-decoration: none;
+        }
+
+        .login-form .forgot-password a:hover {
+            color: #e67e22;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Daydreamer's Bookshop</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login to Daydreamer's Bookshop</h2>
+            <form action="login-process.php" method="POST">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="forgot-password">
+                <p><a href="#">Forgot Password?</a></p>
+                <P>New User??<a href="./new account.html">Create Account</a></P>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
